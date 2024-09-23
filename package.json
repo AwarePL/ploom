@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "example code",
     "main": "index.js",
+    "scripts": {
+        "lintAndFormat": "prettier --write . && eslint . --fix "
+    },
     "repository": "https://github.com/AwarePL/monogo.git",
     "author": "AwarePL <lukasz@korchowiec.pl>",
     "license": "MIT",
@@ -12,6 +15,7 @@
         "eslint": "^9.11.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-cypress": "^3.5.0",
+        "eslint-plugin-import": "^2.30.0",
         "eslint-plugin-prettier": "^5.2.1",
         "globals": "^15.9.0",
         "prettier": "3.3.3"
