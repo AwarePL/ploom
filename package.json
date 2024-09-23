@@ -4,7 +4,9 @@
     "description": "example code",
     "main": "index.js",
     "scripts": {
-        "lintAndFormat": "prettier --write . && eslint . --fix "
+        "lintAndFormat": "prettier --write . && eslint . --fix",
+        "open": "cypress open",
+        "ci": "cypress run"
     },
     "repository": "https://github.com/AwarePL/monogo.git",
     "author": "AwarePL <lukasz@korchowiec.pl>",
