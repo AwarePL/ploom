@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('setAgeCookie', () => {
+    cy.setCookie('isAgeConfirmed', 'true')
+})
+Cypress.Commands.add('passPrivacyTerms', () => {
+    cy.get('#onetrust-close-btn-container').within(() => {
+        cy.get('button').click()
+    })
+})

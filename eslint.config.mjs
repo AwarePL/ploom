@@ -31,6 +31,7 @@ export default [
             'cypress/no-async-before': 'error',
             'cypress/no-pause': 'error',
             'cypress/no-debug': 'error',
+            'no-undef': 'off',
         },
         settings: {
             'import/resolver': {
