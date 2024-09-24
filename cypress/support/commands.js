@@ -27,8 +27,17 @@
 Cypress.Commands.add('setAgeCookie', () => {
     cy.setCookie('isAgeConfirmed', 'true')
 })
+
 Cypress.Commands.add('passPrivacyTerms', () => {
     cy.get('#onetrust-close-btn-container').within(() => {
         cy.get('button').click()
     })
+})
+
+Cypress.Commands.add('checkUrl', (url) => {
+    cy.url().should('include', url)
+})
+
+Cypress.Commands.add('checkPageTitle', (title) => {
+    cy.title().should('include', title)
 })
