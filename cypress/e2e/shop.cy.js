@@ -7,15 +7,18 @@ import {
 import {
     addProductToCart,
     verifyProductAddedToCart,
+    verifyProductsAmmountInMiniCart,
+    navigateToCart,
     verifyProductsAmmountInCart,
 } from '../pages/cartPage.js'
+import { miniCart, cart } from '../locators/cartLocators.js'
 import { productNames } from '../strings/shopStrings.js'
 
 describe('Visit Ploom UK: Buy Heated Tobacco Products, Devices and Kits', () => {
     Cypress.on('uncaught:exception', () => {
         return false
     })
-    
+
     beforeEach(() => {
         cy.setAgeCookie()
         cy.visit('')
@@ -28,7 +31,16 @@ describe('Visit Ploom UK: Buy Heated Tobacco Products, Devices and Kits', () => 
         openProductPageBySku('ploom-x-advanced')
         verifyIsProductOnPage(productNames.ploomXAdvanced('Black'))
         addProductToCart()
-        verifyProductAddedToCart(productNames.ploomXAdvanced('Black'))
+        verifyProductAddedToCart(
+            miniCart.list,
+            productNames.ploomXAdvanced('Black')
+        )
+        verifyProductsAmmountInMiniCart()
+        navigateToCart()
         verifyProductsAmmountInCart()
+        verifyProductAddedToCart(
+            cart.list,
+            productNames.ploomXAdvanced('Black')
+        )
     })
 })
