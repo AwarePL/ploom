@@ -20,6 +20,9 @@ This is examle cypress based project
 
 1. Install node.js version 18.\*
 2. Install yarn package manager: `npm install yarn` in latest version
+3. create env.mjs in root folder `export const env = {
+    ploomGB: 'https://your_target_page'
+}`
 
 ### Project instalation
 
