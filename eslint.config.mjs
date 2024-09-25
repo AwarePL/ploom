@@ -1,17 +1,27 @@
-import globals from 'globals'
 import pluginJs from '@eslint/js'
+import eslintConfigPrettier from 'eslint-config-prettier'
+import prettier from 'eslint-plugin-prettier'
+import pluginImport from 'eslint-plugin-import'
+import globals from 'globals'
+import cypress from 'eslint-plugin-cypress'
 
 export default [
-    { languageOptions: { globals: globals.browser } },
     pluginJs.configs.recommended,
+    eslintConfigPrettier,
     {
-        plugins: [
-            'cypress',
-            'plugin:cypress/recommended',
-            'plugin:prettier/recommended',
-        ],
-    },
-    {
+        languageOptions: {
+            ecmaVersion: 2021,
+            sourceType: 'module',
+            globals: {
+                ...globals.browser,
+                ...globals.es2021,
+            },
+        },
+        plugins: {
+            import: pluginImport,
+            cypress,
+            prettier,
+        },
         rules: {
             'cypress/no-assigning-return-values': 'error',
             'cypress/no-unnecessary-waiting': 'error',
@@ -21,11 +31,15 @@ export default [
             'cypress/no-async-before': 'error',
             'cypress/no-pause': 'error',
             'cypress/no-debug': 'error',
+            'no-undef': 'off',
         },
-    },
-    {
-        env: {
-            'cypress/globals': true,
+        settings: {
+            'import/resolver': {
+                node: {
+                    extensions: ['.js', '.mjs'],
+                    project: ['./package.json'],
+                },
+            },
         },
     },
 ]
