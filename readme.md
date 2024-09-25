@@ -36,8 +36,8 @@ This project can be run localy in headed and headless mode or via docker
 
 ### Local run
 
--   headed: `yarn open`
--   headless: `yarn run`
+-   headed: `yarn run open`
+-   headless: `yarn run ci`
 
 ### Docker
 
